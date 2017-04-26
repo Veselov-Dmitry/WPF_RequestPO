@@ -1,0 +1,494 @@
+﻿<Window x:Class="Request.MainWindow"
+        x:Name="Request"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Request"
+	    xmlns:controls="clr-namespace:Request"
+        mc:Ignorable="d"
+        Title="Заявка"
+        Width="900" MinWidth="900" MaxWidth="900" 
+        Height="700" MaxHeight="900" MinHeight="710" 
+        Icon="/mainicon.ico"    
+        Style="{StaticResource VS2012WindowStyle}"
+        Loaded="Request_Loaded">
+    <Grid x:Name="UpperGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        
+        <Grid x:Name="mainParrent" Grid.Row="0" Grid.Column="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" /><!--0-->
+                <RowDefinition Height="1*"/><!--1-->
+                <RowDefinition Height="180"/><!--2-->
+                <RowDefinition Height="73"/><!--3-->
+                <RowDefinition Height="140*"/><!--4-->
+                <RowDefinition Height="255"/><!--5-->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="mainParrentColumn" Width="900"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" >
+                    <WrapPanel x:Name="TypeGrid" 
+                           Orientation="Vertical"
+                       HorizontalAlignment="Left"
+                           Margin="44,10,0,20"
+                           Width="412">
+                    <RadioButton Checked="TypeRequestSpecific"                
+                        Style="{StaticResource Win8RadioButton}"                
+                        GroupName="type"                
+                        IsChecked="True"                                           
+                        x:Name="POOASU"                                             
+                        Content="ПО разработанное ОАСУ"/>
+                    <RadioButton Checked="TypeRequestSpecific"                 
+                        Style="{StaticResource Win8RadioButton}"                
+                        GroupName="type"         
+                        x:Name="IzmenStructPrav"  
+                        Content="Изменение структуры каталогов, прав доступа" />
+                    <RadioButton Checked="TypeRequestSpecific"                 
+                        Style="{StaticResource Win8RadioButton}"                
+                        GroupName="type"                    
+                        x:Name="POVneshnee"              
+                        Content="ПО внешних разработчиков"/>
+                    </WrapPanel>
+                    <GroupBox Margin="55,0,0,10"
+                          VerticalAlignment="Top"
+                      HorizontalAlignment="Left">
+                        <GroupBox.Header>
+                            <TextBlock Text="Согласование с бюро" FontSize="14"/>
+                        </GroupBox.Header>
+                        <WrapPanel  x:Name="buroCheck"
+                        Orientation="Vertical" Margin="0,0,9,0">
+                            <CheckBox x:Name="BPO_BPV"
+                                  Style="{StaticResource DiscreteCheckBoxStyle}"
+                                Margin="-8,5,0,0" Width="35">
+                                <TextBlock Text="БПО и БПВ"
+                                           Margin="0,0,-80,0" 
+                                           Style="{StaticResource BuroTextBlock}" HorizontalAlignment="Right" Width="87"/>
+                            </CheckBox>
+                            <CheckBox x:Name="GVSIS"
+                                  Style="{StaticResource DiscreteCheckBoxStyle}"
+                                Margin="-8,5,0,0" Width="35">
+                                <TextBlock Text="ГВСИС"
+                                           Margin="0,0,-80,0" 
+                                           Style="{StaticResource BuroTextBlock}" HorizontalAlignment="Right" Width="87"/>
+                            </CheckBox>
+                            <CheckBox x:Name="BSAPR"
+                                  Style="{StaticResource DiscreteCheckBoxStyle}"
+                                Margin="-8,5,0,0" Width="35">
+                                <TextBlock Text="БСАПР"
+                                           Margin="0,0,-80,0" 
+                                           Style="{StaticResource BuroTextBlock}" HorizontalAlignment="Right" Width="87"/>
+                            </CheckBox>
+                            <CheckBox x:Name="BVBD"
+                                  Style="{StaticResource DiscreteCheckBoxStyle}"
+                                Margin="-8,5,0,0" Width="35">
+                                <TextBlock Text="БВБД"
+                                           Margin="0,0,-80,0" 
+                                           Style="{StaticResource BuroTextBlock}" HorizontalAlignment="Right" Width="87"/>
+                            </CheckBox>
+                        </WrapPanel>
+                    </GroupBox>
+                </WrapPanel>
+            <StackPanel Grid.Row="3" Grid.Column="0" Margin="10,0,0,0">
+                    <Grid Width="845" Height="73">
+                        <Grid.RowDefinitions >
+                            <!--10-->
+                            <RowDefinition x:Name="HeadRow000"></RowDefinition>
+                            <RowDefinition x:Name="HeadRow001" Height="auto" MinHeight="40"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <!--5-->
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="210"></ColumnDefinition>
+                            <ColumnDefinition Width="125" x:Name="ColumnRights1" ></ColumnDefinition>
+                            <ColumnDefinition Width="245"></ColumnDefinition>
+                            <ColumnDefinition Width="225"></ColumnDefinition>
+                            <ColumnDefinition Width="0*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Row="0" Grid.Column="1"
+                            BorderBrush="LightGray"
+                            BorderThickness="2,0,1,0"
+                            >
+                            <Label x:Name="aa" 
+                           Style="{StaticResource HederGridLabelText}" 
+                           >Каталог (№ задачи)</Label>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1"
+                            BorderBrush="LightGray"
+                            BorderThickness="2,0,1,0">
+                            <Border
+                            BorderBrush="Gray"
+                            BorderThickness="0,0,0,2"></Border>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2"
+                            BorderBrush="LightGray"
+                            BorderThickness="1,0,1,0">
+                            <Label x:Name="bb"  
+                           Style="{StaticResource HederGridLabelText}"
+                            >Права</Label>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3"
+                            BorderBrush="LightGray"
+                            BorderThickness="1,0,1,0" >
+                            <Label x:Name="cc" 
+                               Style="{StaticResource HederGridLabelText}"
+                           >Пользователь</Label>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="3"
+                            BorderBrush="LightGray"
+                            BorderThickness="1,0,1,0">
+                            <Border
+                            BorderBrush="Gray"
+                            BorderThickness="0,0,0,2"></Border>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="4"
+                            BorderBrush="LightGray"
+                            BorderThickness="1,0,2,0">
+                            <Label x:Name="dd"  
+                           Style="{StaticResource HederGridLabelText}"
+                            >Примечание</Label>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="4"
+                            BorderBrush="LightGray"
+                            BorderThickness="1,0,2,0">
+                            <Border
+                            BorderBrush="Gray"
+                            BorderThickness="0,0,0,2"></Border>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="2"
+                            BorderBrush="LightGray"
+                            BorderThickness="1,0,1,0">
+                            <Border
+                            BorderBrush="Gray"
+                            BorderThickness="0,0,0,2">
+                                <StackPanel   Orientation="Vertical">
+
+                                    <WrapPanel Style="{StaticResource RightsHeaderWrapPanel}">
+                                        <TextBlock Text="R" Style="{StaticResource RightsHeaderTextBlock}">
+                                            <TextBlock.ToolTip>
+                                                <ToolTip>
+                                                    Чтение
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+                                        </TextBlock>
+                                        <TextBlock Text="W"  Style="{StaticResource RightsHeaderTextBlock}">
+                                            <TextBlock.ToolTip>
+                                                <ToolTip>
+                                                    Запись
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+                                        </TextBlock>
+                                        <TextBlock Text="C" Style="{StaticResource RightsHeaderTextBlock}">
+                                            <TextBlock.ToolTip>
+                                                <ToolTip>
+                                                    Создание
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+                                        </TextBlock>
+                                        <TextBlock Text="E" Style="{StaticResource RightsHeaderTextBlock}">
+                                            <TextBlock.ToolTip>
+                                                <ToolTip>
+                                                    Удаление
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+                                        </TextBlock>
+                                        <TextBlock Text="M" Style="{StaticResource RightsHeaderTextBlock}">
+                                            <TextBlock.ToolTip>
+                                                <ToolTip>
+                                                    Модифицирование
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+                                        </TextBlock>
+                                        <TextBlock Text="F" Style="{StaticResource RightsHeaderTextBlock}">
+                                            <TextBlock.ToolTip>
+                                                <ToolTip>
+                                                    Просмотр содержимого
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+                                        </TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel x:Name="rightsTitle"
+                                        HorizontalAlignment="Center">
+                                        <CheckBox  x:Name="TbtnR"  Click="RClickBtn"
+                                      Style="{StaticResource DiscreteCheckBoxStyle}"                    
+                                      Content="    "/>
+                                        <CheckBox  x:Name="TbtnW"  Click="RClickBtn"                                     
+                                Style="{StaticResource DiscreteCheckBoxStyle}"                                      
+                                Content="    "/>
+                                        <CheckBox  x:Name="TbtnC" Click="RClickBtn"                  
+                                Style="{StaticResource DiscreteCheckBoxStyle}"                    
+                                Content="    "/>
+                                        <CheckBox  x:Name="TbtnE"  Click="RClickBtn"                   
+                                Style="{StaticResource DiscreteCheckBoxStyle}"                    
+                                Content="    "/>
+                                        <CheckBox  x:Name="TbtnM"  Click="RClickBtn"                   
+                                Style="{StaticResource DiscreteCheckBoxStyle}"                    
+                                Content="    "/>
+                                        <CheckBox  x:Name="TbtnF"  Click="RClickBtn"
+                                Style="{StaticResource DiscreteCheckBoxStyle}"                    
+                                Content="    "/>
+
+                                    </WrapPanel>
+
+                                </StackPanel>
+                            </Border>
+                        </Border>
+                    </Grid>            
+            </StackPanel>
+            <ScrollViewer Grid.Row="4" Grid.Column="0" x:Name="scroll" HorizontalAlignment="Left" 
+                              VerticalScrollBarVisibility="Auto"
+                              MaxHeight="315"
+                              Width="850"
+                              Margin="35,0,0,0">
+                <Grid x:Name="MainGrid" 
+                          HorizontalAlignment="Left"
+                              ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          ShowGridLines="False" >
+                    <Grid.RowDefinitions >
+                        <!--10-->
+                        <RowDefinition x:Name="Row000" Height="1"></RowDefinition>
+                        <RowDefinition x:Name="Row001" Height="1" ></RowDefinition>
+                        <RowDefinition x:Name="Row002" Height="100"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <!--5-->
+                        <ColumnDefinition Width="20" x:Name="column0"/>
+                        <ColumnDefinition Width="210" x:Name="column1"/>
+                        <ColumnDefinition Width="125" x:Name="column2"/>
+                        <ColumnDefinition Width="245" x:Name="column3"/>
+                        <ColumnDefinition Width="225" x:Name="column4"/>
+                        <ColumnDefinition Width="15" x:Name="column5"/>
+                    </Grid.ColumnDefinitions>
+                    <WrapPanel x:Name="numberRow002"
+                                       Grid.Row="2" Grid.Column="0" >
+                        <Label 
+                                    Width="20"
+                                    Height="100"
+                                    Content="1."/>
+                    </WrapPanel>
+
+                    <WrapPanel x:Name="ctlgRow002"
+                                    Grid.Row="2" Grid.Column="1">
+                        <TextBox x:Name="ctlgTextRow002"
+                                             Width="210"
+                                             Height="100"                                        
+                                         Style="{StaticResource TwitterTextBoxStyle}"
+                                         MouseEnter="ctlgTextRow002_MouseEnter"
+                                         MouseLeave="ctlgTextRow002_MouseLeave"/>
+                        <Button x:Name="ctlgBtnProgRow002"
+                                    Style="{StaticResource Buttons}"
+                                        Height="30" Width="159"
+                                        Margin="30,-35,0,0"
+                                        FontSize="12"
+                                        Visibility="Visible"
+                                        Padding="0,-1,0,0"
+                                        MouseEnter="ctlgTextRow002_MouseEnter"                                         
+                                        MouseLeave="ctlgTextRow002_MouseLeave"
+                                        Click="ctlgBtnProgRow002_Click">
+                            <TextBlock Foreground="Black"
+                                           Margin="0,-7,0,-7"
+                                            Text="Список программ ОАСУ"/>
+                        </Button>
+                    </WrapPanel>
+
+                    <Border x:Name ="rightsRow002" Grid.Row="2" Grid.Column="2" BorderBrush="LightGray" BorderThickness="0,1,0,1" Margin="0,3">
+                        <StackPanel x:Name ="rightsCheckRow002" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <CheckBox x:Name="rButtRow002ColR" 
+                                    Style="{StaticResource DiscreteCheckBoxStyle}" Content="    ">
+                                <CheckBox.ToolTip>
+                                    <Label Content="чтение"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox x:Name="rButtRow002ColW" 
+                                    Style="{StaticResource DiscreteCheckBoxStyle}" Content="    ">
+                                <CheckBox.ToolTip>
+                                    <Label Content="создание"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox x:Name="rButtRow002ColC" 
+                                    Style="{StaticResource DiscreteCheckBoxStyle}" Content="    ">
+                                <CheckBox.ToolTip>
+                                    <Label Content="модифицирование"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox x:Name="rButtRow002ColE" 
+                                    Style="{StaticResource DiscreteCheckBoxStyle}" Content="    ">
+                                <CheckBox.ToolTip>
+                                    <Label Content="запись"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox x:Name="rButtRow002ColM" 
+                                    Style="{StaticResource DiscreteCheckBoxStyle}" Content="    ">
+                                <CheckBox.ToolTip>
+                                    <Label Content="удаление"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox x:Name="rButtRow002ColF" 
+                                    Style="{StaticResource DiscreteCheckBoxStyle}" Content="    ">
+                                <CheckBox.ToolTip>
+                                    <Label Content="просмотр содержимого каталога"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                        </StackPanel>
+                    </Border>
+
+                    <WrapPanel x:Name="usersRow002" 
+                                    Grid.Row="2" Grid.Column="3" >
+                        <Border 
+                                    Style="{StaticResource WarpPOutListBox}"
+                                         MouseEnter="ctlgTextRow002_MouseEnter"
+                                         MouseLeave="ctlgTextRow002_MouseLeave">
+
+                            <ListBox x:Name="usersListRow002"
+                                             Style="{StaticResource UsersListBox}"
+                                             Width="245"
+                                             Height="100"
+                                             MouseDoubleClick="usersTextChanged"
+                                             ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                                <!--<ListBoxItem Style="{StaticResource UsersListBoxItem}">
+                                        <WrapPanel>
+                                            <TextBlock>
+                                                    Ивенов И.И.
+                                            </TextBlock>
+                                            <TextBlock
+                                                    Text="  (12345)">
+                                            </TextBlock>
+                                        </WrapPanel>
+                                    </ListBoxItem>-->
+
+                            </ListBox>
+                        </Border>
+                        <Button x:Name="usersCountRow002"
+                                    Style="{StaticResource Buttons}"
+                                        Width="130" Height="30"
+                                        Padding="0,2,0,0"
+                                        Margin="70,-40,0,0"
+                                        VerticalAlignment="Bottom"
+                                        FontSize="12"
+                                        MouseEnter="ctlgTextRow002_MouseEnter"
+                                        MouseLeave="ctlgTextRow002_MouseLeave"
+                                        Click="usersTextChanged"
+                                        Visibility="Visible">
+                            <TextBlock  Foreground="Black"
+                                            Margin="0,-5,0,-5"
+                                            Text="Редактировать(0)"/>
+                        </Button>
+                    </WrapPanel>
+
+                    <WrapPanel  x:Name="noteRow002"
+                                         Grid.Row="2" Grid.Column="4">
+                        <TextBox  Width="225"
+                                          Height="100"
+                                         Style="{StaticResource TwitterTextBoxStyle}" />
+                    </WrapPanel>
+
+                    <WrapPanel x:Name="RemoveRow002" Margin="-23,0,0,0"
+                                         Grid.Row="2" Grid.Column="5"
+                                       VerticalAlignment="Center">
+                        <Button 
+                                    Width="22"
+                                    Visibility="Hidden"
+                                    Style="{StaticResource Buttons}">
+                            <Label 
+                                        Foreground="Green"                                    
+                                        FontSize="16"
+                                        Margin="-7,0,-7,0"                                           
+                                        Padding="0"                                           
+                                        Content="X"/>
+                            <Button.ToolTip>
+                                <Label  Content="Удалить строку"/>
+                            </Button.ToolTip>
+                        </Button>
+                    </WrapPanel>
+
+                </Grid>
+            </ScrollViewer>
+            <Canvas Grid.Row="5" Grid.Column="0" Height="280" Width="805" Margin="40,0,25,0">
+                <WrapPanel Canvas.Right="0" Canvas.Top="10" >
+                    <Button
+                    Width="120"
+            			Style="{StaticResource Buttons}"
+                        Content="Добавить"
+                        Click="AddRow"/>
+                </WrapPanel>
+                <DockPanel  Canvas.Top="60" >
+                    <Label DockPanel.Dock="Top">Причина изменений</Label>
+                    <TextBox  x:Name="reasonText"  Height="100" Width="800"                                        
+            		        Style="{StaticResource TwitterTextBoxStyle}" />
+                </DockPanel>
+                <WrapPanel Canvas.Top="190" Canvas.Right="0" >
+                    <Button Click="InitWorkFlow" 
+                    Margin="0,0,40,0"
+                    Width="170"
+                        Style="{StaticResource Buttons}" Content="Создать заявку"/>
+                    <Button Click="Exit" 
+                    Width="100"
+                        Style="{StaticResource Buttons}" Content="Отмена"/>
+                </WrapPanel>
+            </Canvas>
+            <WrapPanel  Grid.Row="0" Grid.Column="1" Grid.RowSpan="6"
+                        Height="900"
+                        Width="900" 
+                        Margin="-901,-0,0,0">
+                <controls:ProgramList x:Name="ProgramList" />
+            </WrapPanel>
+            <WrapPanel   Grid.RowSpan="6"
+                       Margin="-902,0,0,0"
+                       Grid.Row="0" Grid.Column="2"
+                       Height="900"
+                       Width="900">
+                <controls:SelectUsers x:Name="SelectUsers" />
+            </WrapPanel>
+        </Grid>
+        <StatusBar Grid.Row="1" Grid.Column="0"
+            DockPanel.Dock="Bottom">
+            <WrapPanel>
+                <WrapPanel x:Name="wrapProgressBar"
+                               Visibility="Visible"
+                               Orientation="Horizontal">
+                    <TextBlock
+                            x:Name="progrBStatus"
+                            Text="Идет загрузка списка пользователей..."></TextBlock>
+                    <ProgressBar
+                            x:Name="progrB"
+                		    Height="10"
+                		    Width="120"
+                            Minimum="0"
+                            Maximum="100"
+                		    VerticalAlignment="Bottom"
+                		    Value="30"
+                            Margin="30,0,20,0" IsIndeterminate="True"
+                            />
+                </WrapPanel>
+                <WrapPanel x:Name="wrapProgressBarExcel"
+                               Visibility="Visible"
+                               Orientation="Horizontal">
+                    <TextBlock
+                            x:Name="progrBStatusExcel"
+                            Text="Идет загрузка списка программ..."></TextBlock>
+                    <ProgressBar
+                            x:Name="progrBExcel"
+                		    Height="10"
+                		    Width="120"
+                            Minimum="0"
+                            Maximum="100"
+                		    VerticalAlignment="Bottom"
+                		    Value="30"
+                            Margin="30,0,20,0" IsIndeterminate="True"
+                            />
+                </WrapPanel>
+
+            </WrapPanel>
+            <StatusBarItem HorizontalAlignment="Right">
+                <ResizeGrip Opacity="0.75"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

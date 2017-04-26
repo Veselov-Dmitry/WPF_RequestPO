@@ -1,0 +1,232 @@
+﻿<Window x:Class="Request.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Request"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="840" MaxHeight="840" MinHeight="840" MinWidth="680" Width="680">
+    <Window.Resources>
+        <ResourceDictionary Source="./Styles/Style.xaml"/>
+    </Window.Resources>
+    <Grid Style="{StaticResource MainForm}">
+        <GroupBox Margin="10,9,10,10">
+            <GroupBox.Header>
+                <TextBlock  FontFamily="Consolas" FontWeight="Bold" FontSize="16" Foreground="DarkBlue" >
+                    <TextBlock.Text >
+                        Бланк заявки
+                    </TextBlock.Text>
+                </TextBlock>
+            </GroupBox.Header>
+            <StackPanel Margin="0,0,0,6.1" Orientation="Vertical">
+                <Grid x:Name="asd"  Height="78" Width="auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48*"></ColumnDefinition>
+                        <ColumnDefinition Width="91*"></ColumnDefinition>
+                        <ColumnDefinition Width="341*"></ColumnDefinition>
+                        <ColumnDefinition Width="160*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" x:Name="na" FontSize="12" Content="на" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,5,35"  />
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,14" VerticalAlignment="Center" Height="50">
+                        <RadioButton x:Name="POVneshnee" GroupName="Technologies" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Content="ПО внешнее" Height="25"/>
+                        <RadioButton x:Name="POOASU" GroupName="Technologies" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="ПО ОАСУ"  Height="25"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Vertical">
+                        <Label  FontSize="20"  x:Name="zayavka" FontWeight="Medium" HorizontalAlignment="Center" Content="Заявка" Padding="0,-2,0,0" Height="29" />
+                        <RadioButton x:Name="IzmenStructPrav" GroupName="Technologies" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" Height="16" Content="изменение структурыкатлогов прав доступа" Width="313.68" Margin="10,0,6,0"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Orientation="Vertical" Margin="0,0,10,0" Width="140">
+                        <Button Style="{StaticResource MainButton}" Content="Создать заявку"/>
+                        <Button Style="{StaticResource MainButton}" Content="Выборка данных"/>
+                        <Button Style="{StaticResource MainButton}" Content="Отчет по заявке"/>
+                    </StackPanel>
+
+
+                </Grid>
+                <Grid Height="72" RenderTransformOrigin="0.5,0.5" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160*"></ColumnDefinition>
+                        <ColumnDefinition Width="500*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0" FontSize="12" Foreground="Blue" Width="150">
+                        <GroupBox.Header>
+                            Согласование с бюро
+                        </GroupBox.Header>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox Content="БПО и БПВ" Margin="3"/>
+                                <CheckBox Content="ГРЗП" Margin="3"/>
+                            </StackPanel>
+                            <CheckBox Content="БСАПР" Margin="3"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Label Grid.Column="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Padding="0" Margin="0,0,150,0">
+                        На сервере предприятия
+                    </Label>
+                    <StackPanel  Orientation="Vertical"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions >
+                        <!--10-->
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition  Height="025"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                        <RowDefinition  Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <!--5-->
+                        <ColumnDefinition Width="27"></ColumnDefinition>
+                        <ColumnDefinition Width="155*"></ColumnDefinition>
+                        <ColumnDefinition Width="110"></ColumnDefinition>
+                        <ColumnDefinition Width="128*"></ColumnDefinition>
+                        <ColumnDefinition Width="128*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label  HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="0" >Каталог (№ задачи)</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" Margin="0">Права</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" Margin="0">Пользователь</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" Margin="0" >Примечание</Label>
+                    <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" Height="25" Margin="0,0,0,0" VerticalAlignment="Bottom">
+                        <ToggleButton  Margin="1">R</ToggleButton>
+                        <ToggleButton  Width="15" Margin="1">W</ToggleButton>
+                        <ToggleButton  Margin="1">C</ToggleButton>
+                        <ToggleButton  Margin="1">E</ToggleButton>
+                        <ToggleButton  Margin="1">M</ToggleButton>
+                        <ToggleButton  Margin="1">F</ToggleButton>
+                    </StackPanel>
+
+
+                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">1.</Label>
+                    <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">2.</Label>
+                    <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">3.</Label>
+                    <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">4.</Label>
+                    <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">5.</Label>
+                    <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">6.</Label>
+                    <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">7.</Label>
+                    <Label Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">8.</Label>
+                    <Label Grid.Row="10" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">9.</Label>
+
+                    <TextBox Grid.Row="2" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="4" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="5" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="6" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="7" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="8" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="9" Grid.Column="1" Background="LightYellow"></TextBox>
+                    <TextBox Grid.Row="10" Grid.Column="1" Background="LightYellow"></TextBox>
+
+                    <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="5" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="6" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="7" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="8" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="9" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="10" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal" Height="17" Margin="0" Width="auto">
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                        <CheckBox Margin="1"></CheckBox>
+                    </StackPanel>
+
+
+                    <TextBox Grid.Row="2" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="4" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="5" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="6" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="7" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="8" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="9" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="10" Grid.Column="3" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+
+                    <TextBox Grid.Row="2" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="4" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="5" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="6" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="7" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="8" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="9" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+                    <TextBox Grid.Row="10" Grid.Column="4" Background="LightYellow" Margin="0,0,25,0"></TextBox>
+
+                </Grid>
+                <StackPanel Margin="27,0,0,0">
+                    <Label >Причина изменений</Label>
+                    <TextBox Background="LightYellow" Height="85.9" Margin="0,0,23,0"/>
+                </StackPanel>
+            </StackPanel>
+
+        </GroupBox>
+
+    </Grid>
+
+
+</Window>

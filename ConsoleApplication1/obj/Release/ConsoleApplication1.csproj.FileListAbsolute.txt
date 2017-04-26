@@ -1,0 +1,8 @@
+D:\MyDocuments\Projects\Request\ConsoleApplication1\bin\Release\ConsoleApplication1.exe
+D:\MyDocuments\Projects\Request\ConsoleApplication1\bin\Release\ConsoleApplication1.pdb
+D:\MyDocuments\Projects\Request\ConsoleApplication1\bin\Release\Interop.Office.dll
+D:\MyDocuments\Projects\Request\ConsoleApplication1\obj\Release\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\MyDocuments\Projects\Request\ConsoleApplication1\obj\Release\Interop.Office.dll
+D:\MyDocuments\Projects\Request\ConsoleApplication1\obj\Release\ConsoleApplication1.csproj.ResolveComReference.cache
+D:\MyDocuments\Projects\Request\ConsoleApplication1\obj\Release\ConsoleApplication1.exe
+D:\MyDocuments\Projects\Request\ConsoleApplication1\obj\Release\ConsoleApplication1.pdb
